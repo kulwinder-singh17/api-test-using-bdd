@@ -74,9 +74,14 @@ mvn test
 ```bash
 Feature: Weather API Testing
 
-  Scenario: Get weather data for a city
-    Given I send a GET request to the API
-    Then I capture the API response in the report
+  Scenario Outline: Get current weather of "<City>"
+    Given check weather of "<City>" using GET
+    Then status code should be 200
+    Examples:
+      | City   |
+      | London |
+      | Mexico |
+      | Mumbai |
 ```
 
 ## License
